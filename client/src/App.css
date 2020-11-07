@@ -1,0 +1,8 @@
+.App {
+  text-align: center;
+}
+
+.app__input{
+  padding: 10px;
+  width: 100%
+}
