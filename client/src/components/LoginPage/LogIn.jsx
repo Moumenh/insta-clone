@@ -48,6 +48,7 @@ class Login extends React.Component {
                     alt='logo' />
                 <div className='loging__input'>
                     <Input className='login_in'
+                        placeholder="Username .."
                         type='text'
                         name='name'
                         value={name}
@@ -55,6 +56,7 @@ class Login extends React.Component {
                     />
                     <br />
                     <Input className='login_in'
+                        placeholder="Password .."
                         type='password'
                         name='password'
                         value={password}
