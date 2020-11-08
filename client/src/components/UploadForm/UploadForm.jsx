@@ -4,19 +4,12 @@ import { Input, Button } from '@material-ui/core';
 
 import './UploadForm.css'
 
-const UploadForm = ({ handleClick, handleChange, username, avatar, imgUrl, caption }) => {
+const UploadForm = ({ handleClick, handleChange, avatar, imgUrl, caption }) => {
 
     return (
         <div className='upload'>
             <form className='app__signup'>
-                <Input
-
-                    placeholder='username'
-                    type='text'
-                    name='username'
-                    value={username}
-                    onChange={handleChange }
-                />
+                
                 <Input
 
                     placeholder='Avatar'

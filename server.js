@@ -40,7 +40,7 @@ app.get('/posts', (req, res) => {
 
 })
 
-app.post('/singup', (req, res) => {
+app.post('/signup', (req, res) => {
     console.log(req.body)
     let user = new User(req.body)
     user.save((err, user) => {
@@ -58,7 +58,7 @@ app.post('/login', async (req, res) => {
         if(req.body.password !== user.password) return res.status(404).json({ success: false})
 
         res.status(201).json({ success:true,
-        user })
+        user:user.name })
 
     } catch (err) {
         res.status(404).json({

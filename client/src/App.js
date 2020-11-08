@@ -18,7 +18,7 @@ class App extends React.Component {
       imgUrl: '',
       caption: '',
       posts: [],
-      isLogged: false
+      isLogged: false,
     }
   }
 
@@ -46,10 +46,7 @@ class App extends React.Component {
 
   }
 
-  handleSignin = (e) => {
-    e.preventDefault()
-    this.setState({ isLogged:!this.state.isLogged })
-  }
+  
 
   handleChange = (e) => {
     const { name, value } = e.target
@@ -71,26 +68,50 @@ class App extends React.Component {
       .then(data => this.getData())
   }
 
+  postReqSignIn = (obj) => {
+    // Simple POST request with a JSON body using fetch
+    const requestOptions = {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(obj)
+    };
+    fetch('http://localhost:5000/login', requestOptions)
+      .then(response => response.json())
+      .then(data => {
+          if(data.success){
+              console.log(data.user)
+              this.setState({ isLogged:!this.state.isLogged,
+              username:data.user })
+          }
+      })
+  }
+
+  signOut = (e) =>{
+    e.preventDefault()
+    this.setState({ isLogged:!this.state.isLogged })
+  }
+
 
   render() {
-    const { username, avatar, imgUrl, caption, posts, isLogged } = this.state
+    const { username, avatar, imgUrl, caption, posts, isLogged} = this.state
     console.log(posts)
     return (
       <div className='App'>
 
-        <Header />
+        
         {
           isLogged ?
             <div>
+              <Header signOut={this.signOut}/>
               <UploadForm handleClick={this.handleClick} handleChange={this.handleChange}
-                username={username} avatar={avatar} imgUrl={imgUrl} caption={caption} />
+                 avatar={avatar} imgUrl={imgUrl} caption={caption} />
               {
                 posts.map((post, id) => {
                   return <Post post={post} key={id} />
                 })
               }
             </div>
-            : <Login handleSignin={this.handleSignin} />}
+            : <Login postReqSignIn={this.postReqSignIn}/>}
 
 
 
