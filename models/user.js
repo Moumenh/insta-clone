@@ -5,12 +5,14 @@ const mongoose = require('mongoose')
 const userSchema = mongoose.Schema({
     name: {
         type:String,
-        maxlength:50
+        maxlength:50,
+        minglength : 5
     },
     email: {
         type:String,
         trim:true,
-        unique: 1 
+        unique: 1,
+        minglength : 5
     },
     password: {
         type: String,
