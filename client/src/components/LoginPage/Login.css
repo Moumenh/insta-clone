@@ -1,0 +1,30 @@
+.login{
+    display: flex;
+    flex-direction: column;
+    width: 800px;
+    padding: 40px;
+    margin-top: 20px;
+    object-fit: contain;
+    align-items: center;
+}
+
+.loging__logo{
+    margin-top: 20px;
+    width: 120px;
+    object-fit: contain;
+}
+
+
+
+.loging__input{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    width: 60%;
+}
+
+
+.login_button{
+    margin-top: 15px;
+    background-color: paleturquoise;
+}
